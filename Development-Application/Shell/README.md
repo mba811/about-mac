@@ -1,6 +1,6 @@
 # Shell
 
->（一）：功能、配置和插件
+#（一）：功能、配置和插件
 
 关于[shell](http://zh.wikipedia.org/wiki/Unix_shell)，一个广义的解释就是在用户与操作系统之间，提供一个工具或接口给用户来操作计算机系统；用户在shell中通过输入命令行，按下回车键，shell执行命令后就能返回结果，达到操作计算机的效果。  
 但有很多人会问，为什么要学习shell呢？以下是我对为什么要学习shell的看法：
@@ -20,7 +20,7 @@ Linux/Unix默认都是使用Bash(Bourne-again Shell)，但我更倾向于使用[
 ![](http://7q5cfr.com1.z0.glb.clouddn.com/@/Shell/02.png)
 
 
-# Shell有哪些功能
+## Shell有哪些功能
 
   * ### 命令历史记录
 
@@ -157,7 +157,7 @@ shell script是利用shell的功能所编写的一个**程序**，这个程序�
 [^]
 表示反向选择。例如表示有一个字符，只要不是a,b,c的其他字符都可以
 
-# iTerm 2(for mac) && Oh My Zsh
+## iTerm 2(for mac) && Oh My Zsh
 
 如果你是mac的用户，推荐一个终端应用[iTerm 2](https://www.iterm2.com/), iTerm 2 相比mac自带的 Terminal 应用，有太多优点了。例如，支持画面分割，可以设置主题，各种使用的快捷键，以及快速唤出。配合 [Oh My Zsh](http://ohmyz.sh/) 使用，简直优雅到爆！
 
@@ -280,17 +280,17 @@ autojump插件使你能够快速切换路径，再也不需要逐个敲入目录
 
 YouTube有个演示视频 [zsh shell](https://www.youtube.com/watch?v=HGBgMX5HW_g)详细介绍如果使用Oh My Zsh
 
-# 总结
+## 总结
 
 作为的一个程序员，我觉得shell是一个必不可少的工具，使用它能够毫不费劲地操作计算机。在shell提示下，通过调用各种各样的工具，并结合管道，将这些工具根据自己需要组合起来，创建和制定宏工具，甚至编写shell script来将简单而重复的工作自动化，做到**Don't repeat your self**。
 
-> （二）：变量、数据重定向和管道
+## （二）：变量、数据重定向和管道
 
 重点介绍，shell中的**变量**的如何设置和读取数据，读取之后如何使用变量？每个程序一般都有输入和输出，让我们看看**数据重定向**如何处理输入和输出的？还有，Unix/Linux系统提供丰富的工具，我们如何将这些工具通过**管道**来组合成更加强大的宏工具呢？下面，由我来逐一详细介绍变量、数据重定向和管道。
 
 ![](http://7q5cfr.com1.z0.glb.clouddn.com/@/Shell/25.png) 
 
-# 变量
+## 变量
 
 ### 变量的作用
 
@@ -413,7 +413,7 @@ blank can't exist.png
 ![](http://7q5cfr.com1.z0.glb.clouddn.com/@/Shell/41.png) 
 
 
-# 数据重定向
+## 数据重定向
 
 ### 含义
 
@@ -496,7 +496,7 @@ blank can't exist.png
 ![](http://7q5cfr.com1.z0.glb.clouddn.com/@/Shell/52.png) 
 
 
-# 管道
+## 管道
 
 在Unix设计哲学中，有一个重要设计原则--[KISS](http://en.wikipedia.org/wiki/KISS_principle)(Keep it Simple, Stupid)，大概意思就是**只关注如何做好一件事，并把它做到极致**。每个程序都有各自的功能，那么有没有一样东西将不同功能的程序互相连通，自由组合成更为强大的宏工具呢？此时，**管道**出现了，它能够让程序实现了**高内聚，低耦合**。
 
@@ -515,7 +515,7 @@ blank can't exist.png
 
 上面一个很关键的符号`|`，就是管道，它能够将前一个命令处理完的`stdout`作为下一条命令`stdin`。
 
-# 扩展阅读
+## 扩展阅读
 
   * [鸟哥的Linux私房菜-基础学习篇](http://book.douban.com/subject/4889838/)
   * [Unix Pipes 管道原稿](http://coolshell.cn/articles/1351.html)
