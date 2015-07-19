@@ -2,6 +2,7 @@
 
 This is the summary of my book.
 
+* [声明](book/copyright.md)
 * [应用环境](Application-Environment/README.md)
     * [网络、邮件和文件共享](Application-Environment/Internet-email-and-file-sharing/README.md)
     * [语言、输入法和字体](Application-Environment/Language-input-method-and-fonts/README.md)
