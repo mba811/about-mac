@@ -1,6 +1,6 @@
 # 多媒体和 AirPlay
 
-## 最后一部分聊聊Mac里和影音娱乐相关的软件，抛开观看网络视频的主力Safari，关注一下Mac内置的其他几个应用：iTunes、Photo Booth、iMovie、GarageBand、QuickTime Player以及很有科技感的AirPlay。
+>最后一部分聊聊Mac里和影音娱乐相关的软件，抛开观看网络视频的主力Safari，关注一下Mac内置的其他几个应用：iTunes、Photo Booth、iMovie、GarageBand、QuickTime Player以及很有科技感的AirPlay。
 
 Photo Booth这个软件一直觉得挺浪费的，用来拍了几张搞怪照片和视频以后，很少有机会再打开它。iPhoto、iMovie、GarageBand同属于iLife三套件，分别用来管理照片、视频、音乐，和其他预装的软件一样，都是以易用为主，把复杂的操作简单化，非常合适初学者的入门。提到入门级就有专业级，它们对应的分别Apple产品是：iPhoto→Aperture（10.10 以后将升级到Photos）、iMovie→Final Cut Pro X、GarageBand→Logic Pro。
 
