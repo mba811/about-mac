@@ -195,11 +195,13 @@ Restart service mysql:
 
 #### SYNOPSIS
 
+```
 # [<sudo>] `brew services` `list`<br>
 # [<sudo>] `brew services` `restart` <formula><br>
 # [<sudo>] `brew services` `start` <formula> [<plist>]<br>
 # [<sudo>] `brew services` `stop` <formula><br>
 # [<sudo>] `brew services` `cleanup`<br>
+```
 
 ### LaunchRocket — 用于管理 homebrew 安装的服务。可以通过cask来安装。
 
