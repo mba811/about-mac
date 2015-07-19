@@ -7,7 +7,7 @@
    * [语言、输入法和字体](Application-Environment/Language-input-method-and-fonts/README.md)
    * [安全、加密和备份](Application-Environment/section2/example1.md)
 * [软件应用](Software-Applications/README.md)
-   * [信息的浏览和采集](software-applications/Browse-and-collection-of-information/README.md)
+   * [信息的浏览与采集](software-applications/Browse-the-collection-of-information/README.md)
    * [文档管理](Software-Applications/Document-Management/README.md)
    * [邮件、即时通讯和分享](Software-Applications/E-mail-instant-messaging-and-sharing/README.md)
    * [时间管理](Software-Applications/Time-Management/README.md)
