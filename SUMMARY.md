@@ -46,7 +46,7 @@
       * [Virtualenv](Development-Application/Python/virtualenv.md)
    * [数据库 MySql](Development-Application/MySql/README.md)
    * [Latex](Development-Application/Latex/README.md)
-* [虚拟技术](Virtual-Technology/README.md)
+* [虚拟应用](Virtual-Technology/README.md)
    * [xhyve](Virtual-Technology/xhyve.md)
    * [Vagrant](Virtual-Technology/Vagrant/README.md)
       * [安装配置](Virtual-Technology/Vagrant/Installation.md)
