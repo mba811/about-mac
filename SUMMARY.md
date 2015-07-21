@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [声明](book/copyright.md)
+   * [为什么爱用 Mac](book/README.md)
 * [应用环境](Application-Environment/README.md)
    * [网络、邮件和文件共享](Application-Environment/Internet-email-and-file-sharing/README.md)
    * [语言、输入法和字体](Application-Environment/Language-input-method-and-fonts/README.md)
@@ -45,4 +46,5 @@
    * [MySql](Development-Application/MySql/README.md)
    * [Latex](Development-Application/Latex/README.md)
    * [Vagrant](Development-Application/Vagrant/README.md)
-
+      * [安装配置](Development-Application/Vagrant/Installation.md)
+      * [使用入门](Development-Application/Vagrant/Use.md)
