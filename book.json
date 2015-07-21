@@ -1,6 +1,6 @@
 {
     "author": "洛桑扎巴 <ztd811@yahoo.com>",
-    "description": "This is a sample book created by gitbook",
+    "description": "You are what you read！你的阅读造就了你！",
     "extension": null,
     "generator": "site",
     "isbn": null,
@@ -31,6 +31,6 @@
         "paperSize": "a4"
     },
     "plugins": [],
-    "title": "Sample GitBook",
+    "title": "关于 Mac",
     "variables": {}
 }
