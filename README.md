@@ -21,7 +21,7 @@ MAC OSX 是苹果公司设计开发的一款广受好评的操作系统。如果
   * [应用环境](https://github.com/mba811/about-mac/blob/master/Application-Environment/README.md)
     * [网络、邮件和文件共享](https://github.com/mba811/about-mac/blob/master/Application-Environment/Internet-email-and-file-sharing/README.md)
     * [语言、输入法和字体](https://github.com/mba811/about-mac/blob/master/Application-Environment/Language-input-method-and-fonts/README.md)
-    * [安全、加密和备份](https://github.com/mba811/about-mac/blob/master/Application-Environment/section2/example1.md)
+    * [安全、加密和备份](https://github.com/mba811/about-mac/blob/master/Application-Environment/Security-encryption-and-backup/README.md)
   * [软件应用](https://github.com/mba811/about-mac/blob/master/Software-Applications/README.md)
     * [信息的浏览、采集](https://github.com/mba811/about-mac/blob/master/Software-Applications/Information-browsing-collection/README.md)
     * [文档管理](https://github.com/mba811/about-mac/blob/master/Software-Applications/Document-Management/README.md)
