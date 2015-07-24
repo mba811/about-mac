@@ -10,7 +10,7 @@ MAC OSX 是苹果公司设计开发的一款广受好评的操作系统。如果
 * [阅读](http://mba811.gitbooks.io/about-mac/)
 * [阅读-China](http://11ten.gitcafe.io/book-m/)
 
-[![image](http://7q5cfr.com1.z0.glb.clouddn.com/@/mac/cover.jpg)](http://mba811.gitbooks.io/about-mac/content/)
+[![image](http://7q5cfr.com1.z0.glb.clouddn.com/cover.jpg)](http://mba811.gitbooks.io/about-mac/content/)
 
 ## 目录浏览 
 
