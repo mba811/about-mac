@@ -2,6 +2,11 @@
     "name": "《关于 Mac》 | 洛桑扎巴'Book",
     "version": "0.0.1",
     "description": "Mac中文教程，Mac中文指南",
+    "links": {
+        "sidebar": {
+            "Home Page of 洛桑扎巴": "http://site.11ten.net/"
+        }
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/mba811/About-Mac.git"
