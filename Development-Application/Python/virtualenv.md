@@ -1,44 +1,138 @@
 # Virtualenv
 
-[Virtualenv](http://www.virtualenv.org/) is a tool that creates an isolated Python environment for each of your projects. For a particular project, instead of installing required packages globally, it is best to install them in an isolated folder in the project (say a folder named `venv`), that will be managed by virtualenv.
+> virtualenv is a tool to create isolated Python environments.
 
-The advantage is that different projects might require different versions of packages, and it would be hard to manage that if you install packages globally. It also allows you to keep your global `/usr/local/lib/python2.7/site-packages` folder clean, containing only critical or big packages that you always need (like IPython, Numpy).
+`virtualenv`通过创建独立Python开发环境的工具, 来解决依赖、版本以及间接权限  
+问题. 比如一个项目依赖Django1.3 而当前全局开发环境为Django1.7, 版本跨度过大, 导致不兼容使项目无法正在运行, 使用virtualenv可以解决这些问题.
 
-### Install
+> `virtualenv`创建一个拥有自己安装目录的环境, 这个环境不与其他虚拟环境共享库, 能够方便的管理python版本和管理python库
 
-To install virtualenv, simply run:
+# 1. 安装Virtualenv
 
+使用`pip`安装Virtualenv, 使用过python的都应该知道`pip`包管理神器吧, 即使不知道, 网站也有大把的教程, 不过推荐查看[官方安装指南](https://pip.pypa.io/en/latest/installing.html)
+    
     $ pip install virtualenv
+    
+    //或者由于权限问题使用sudo临时提升权限
+    
+    $ sudo pip install virtualenv
 
-### Usage
+# 2. virtualenv基本使用
 
-Let's say you have a project in a directory called `myproject`. To set up virtualenv for that project:
+现在开始使用virtualenv管理python环境
+    
+    ➜  Test git:(master) ✗ virtualenv ENV  #创建一个名为ENV的目录, 并且安装了ENV/bin/python, 创建了lib,include,bin目录,安装了pip
+    
+    New python executable in 
+    
+    Installing setuptools, pip...done.
+    
+    ➜  Test git:(master) ✗ cd ENV
+    
+    ➜  ENV git:(master) ✗ ll
+    
+    drwxr-xr-x  14 andrew_liu  staff  476 12  8 08:49 bin
+    
+    drwxr-xr-x   3 andrew_liu  staff  102 12  8 08:49 include
+    
+    drwxr-xr-x   3 andrew_liu  staff  102 12  8 08:49 lib
 
-    $ cd myproject/
-    $ virtualenv venv --distribute
+  * `lib`,所有安装的python库都会放在这个目录中的`lib/pythonx.x/site-packages/`下
+  * `bin`,`bin/python`是在当前环境是使用的python解释器
 
-If you want your virtualenv to also inherit globally installed packages (like IPython or Numpy mentioned above), use:
+> 如果在命令行中运行`virtualenv --system-site-packages ENV`, 会继承`/usr/lib/python2.7/site-packages`下的所有库, 最新版本virtualenv把把访问全局`site-packages`作为默认行为  
+default behavior.
 
-    $ virtualenv venv --distribute --system-site-packages
+## 2.1. 激活virtualenv
 
-These commands create a `venv` subdirectory in your project where everything is installed. You need to **activate** it first though (in every terminal where you are working on your project):
+    #ENV目录下使用如下命令
+    
+    ➜  ENV git:(master) ✗ source ./bin/activate  #激活当前virtualenv
+    
+    (ENV)➜  ENV git:(master) ✗ #注意终端发生了变化
 
-    $ source venv/bin/activate
+    
+    #使用pip查看当前库
+    
+    (ENV)➜  ENV git:(master) ✗ pip list
+    
+    pip (1.5.6)
+    
+    setuptools (3.6)
+    
+    wsgiref (0.1.2) #发现在只有这三个
+    
+    pip freeze  #显示所有依赖
+    
+    pip freeze > requirement.txt  #生成requirement.txt文件
+    
+    pip install -r requirement.txt  #根据requirement.txt生成相同的环境
 
-You should see a `(venv)` appear at the beginning of your terminal prompt indicating that you are working inside the virtualenv. Now when you install something:
+## 2.2. 关闭virtualenv
 
-    $ pip install <package>
-
-It will get installed in the `venv` folder, and not conflict with other projects.
-
-To leave the virtual environment use.
-
+使用下面命令
+    
     $ deactivate
 
-**Important**: Remember to add `venv` to your project's `.gitignore` file so you don't include all of that in your source code!
+## 2.3. 指定python版本
 
-It is preferable to install big packages (like Numpy), or packages you always use (like IPython) globally. All the rest can be installed in a virtualenv.
+可以使用`-p PYTHON_EXE`选项在创建虚拟环境的时候指定python版本
+    
+    #创建python2.7虚拟环境
+    
+    ➜  Test git:(master) ✗ virtualenv -p /usr/bin/python2.7 ENV2.7
+    
+    Running virtualenv with interpreter /usr/bin/python2.7
+    
+    New python executable in ENV2.7/bin/python
+    
+    Installing setuptools, pip...done.
 
-### Virtualenvwrapper
-For easier management of different virtual environments for multiple packages. Installing Virtualenv Wrapper is possible. For installation instructions read the [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/index.html) documents here.
-One thing to mention is that virtualenvwrapper keeps all the virtual environments in `~/.virtualenv` and does not add them to the project directory.
+    
+    #创建python3.4虚拟环境
+    
+    ➜  Test git:(master) ✗ virtualenv -p /usr/local/bin/python3.4 ENV3.4
+    
+    Running virtualenv with interpreter /usr/local/bin/python3.4
+    
+    Using base prefix '/Library/Frameworks/Python.framework/Versions/3.4'
+    
+    New python executable in ENV3.4/bin/python3.4
+    
+    Also creating executable in ENV3.4/bin/python
+    
+    Installing setuptools, pip...done.
+
+> 到此已经可以解决python版本冲突问题和python库不同版本的问题
+
+# 3. 其他
+
+## 3.1. 生成可打包环境
+
+某些特殊需求下,可能没有网络, 我们期望直接打包一个ENV, 可以解压后直接使用, 这时候可以使用`virtualenv -relocatable`指令将ENV修改为可更改位置的ENV
+    
+    #对当前已经创建的虚拟环境更改为可迁移
+    
+    ➜  ENV3.4 git:(master) ✗ virtualenv --relocatable ./
+    
+    Making script ./bin/easy_install relative
+    
+    Making script ./bin/easy_install-3.4 relative
+    
+    Making script ./bin/pip relative
+    
+    Making script ./bin/pip3 relative
+    
+    Making script ./bin/pip3.4 relative
+
+## 3.2. 获得帮助
+
+    $ virtualenv -h
+
+当前的ENV都被修改为相对路径, 可以打包当前目录, 上传到其他位置使用
+
+> 这并不能使虚拟环境跨平台使用
+
+# 4. 参考链接
+
+[virtualenv官方文档](http://virtualenv.readthedocs.org/en/latest/virtualenv.html)
