@@ -16,47 +16,47 @@ Vagrant还包括如下一些操作：
   * `vagrant box list`
 
 显示当前已经添加的box列表
-    
+
       $ vagrant box list
       base (virtualbox)
-    
+
 
   * `vagrant box remove`
 
 删除相应的box
-    
+
       $ vagrant box remove base virtualbox
       Removing box 'base' with provider 'virtualbox'...
-    
+
 
   * `vagrant destroy`
 
 停止当前正在运行的虚拟机并销毁所有创建的资源
-    
+
       $ vagrant destroy
       Are you sure you want to destroy the 'default' VM? [y/N] y
       [default] Destroying VM and associated drives...
-    
+
 
   * `vagrant halt`
 
 关机
-    
+
       $ vagrant halt
       [default] Attempting graceful shutdown of VM...
-    
+
 
   * `vagrant package`
 
 打包命令，可以把当前的运行的虚拟机环境进行打包
-    
+
       $ vagrant package
       [default] Attempting graceful shutdown of VM...
       [default] Clearing any previously set forwarded ports...
       [default] Creating temporary directory for export...
       [default] Exporting VM...
       [default] Compressing package to: /Users/astaxie/vagrant/package.box
-    
+
 
   * `vagrant plugin`
 
@@ -71,7 +71,7 @@ Vagrant还包括如下一些操作：
   * `vagrant reload`
 
 重新启动虚拟机，主要用于重新载入配置文件
-    
+
       $ vagrant reload
       [default] Attempting graceful shutdown of VM...
       [default] Setting the name of the VM...
@@ -87,23 +87,23 @@ Vagrant还包括如下一些操作：
       [default] Setting hostname...
       [default] Mounting shared folders...
       [default] -- /vagrant
-    
+
 
   * `vagrant resume`
 
 恢复前面被挂起的状态
-    
+
       $vagrant resume
       [default] Resuming suspended VM...
       [default] Booting VM...
       [default] Waiting for VM to boot. This can take a few minutes.
       [default] VM booted and ready for use!
-    
+
 
   * `vagrant ssh-config`
 
 输出用于ssh连接的一些信息
-    
+
       $vagrant ssh-config
       Host default
       HostName 127.0.0.1
@@ -115,30 +115,30 @@ Vagrant还包括如下一些操作：
       IdentityFile "/Users/username/.vagrant.d/insecure_private_key"
       IdentitiesOnly yes
       LogLevel FATAL
-    
+
 
   * `vagrant status`
 
 获取当前虚拟机的状态
-    
+
       $vagrant status
       Current machine states:
-    
+
       default                   running (virtualbox)
-    
+
       The VM is running. To stop this VM, you can run `vagrant halt` to
       shut it down forcefully, or you can run `vagrant suspend` to simply
       suspend the virtual machine. In either case, to restart it again,
       simply run `vagrant up`.
-    
+
 
   * `vagrant suspend`
 
 挂起当前的虚拟机
-    
+
       $ vagrant suspend
       [default] Saving VM state and suspending execution...
-    
+
 
 ## 模拟打造多机器的分布式系统
 
@@ -152,7 +152,7 @@ Vagrant还包括如下一些操作：
 Vagrant支持单机模拟多台机器，而且支持一个配置文件Vagrntfile就可以跑分布式系统。
 
 现在我们来建立多台VM跑起來，並且让他们之间能够相通信，假设一台是应用服务器、一台是DB服务器，那么这个结构在Vagrant中非常简单，其实和单台的配置差不多，你只需要通过`config.vm.define`来定义不同的角色就可以了，现在我们打开配置文件进行如下设置：
-    
+
     Vagrant.configure("2") do |config|
       config.vm.define :web do |web|
         web.vm.provider "virtualbox" do |v|
@@ -162,7 +162,7 @@ Vagrant支持单机模拟多台机器，而且支持一个配置文件Vagrntfile
         web.vm.hostname = "web"
         web.vm.network :private_network, ip: "11.11.1.1"
       end
-    
+
       config.vm.define :db do |db|
         db.vm.provider "virtualbox" do |v|
               v.customize ["modifyvm", :id, "--name", "db", "--memory", "512"]
@@ -172,10 +172,10 @@ Vagrant支持单机模拟多台机器，而且支持一个配置文件Vagrntfile
         db.vm.network :private_network, ip: "11.11.1.2"
       end
     end
-    
+
 
 这里的设置和前面我们单机设置配置类似，只是我们使用了`:web`以及`:db`分別做了两个VM的设置，并且给每个VM设置了不同的`hostname`和IP，设置好之后再使用`vagrant up`将虚拟机跑起来：
-    
+
     $ vagrant up
     Bringing machine 'web' up with 'virtualbox' provider...
     Bringing machine 'db' up with 'virtualbox' provider...
@@ -210,28 +210,28 @@ Vagrant支持单机模拟多台机器，而且支持一个配置文件Vagrntfile
     [db] Configuring and enabling network interfaces...
     [db] Mounting shared folders...
     [db] -- /vagrant
-    
+
 
 看到上面的信息输出后，我们就可以通过`vagrant ssh`登录虚拟机了，但是这次和上次使用的不一样了，这次我们需要指定相应的角色，用来告诉ssh你期望连接的是哪一台：
-    
+
     $ vagrant ssh web
     vagrant@web:~$
-    
+
     $ vagrant ssh db
     vagrant@db:~$
-    
+
 
 是不是很酷！现在接下来我们再来验证一下虚拟机之间的通信，让我们先使用ssh登录web虚拟机，然后在web虚拟机上使用ssh登录web虚拟机(默认密码是`vagrant`)：
-    
+
     $ vagrant ssh web
     Linux web 2.6.32-38-server #83-Ubuntu SMP Wed Jan 4 11:26:59 UTC 2012 x86_64 GNU/Linux
     Ubuntu 10.04.4 LTS
-    
+
     Welcome to the Ubuntu Server!
      * Documentation:  http://www.ubuntu.com/server/doc
     New release 'precise' available.
     Run 'do-release-upgrade' to upgrade to it.
-    
+
     Welcome to your Vagrant-built virtual machine.
     Last login: Thu Aug  8 18:55:44 2013 from 10.0.2.2
     vagrant@web:~$ ssh 11.11.1.2
@@ -242,15 +242,15 @@ Vagrant支持单机模拟多台机器，而且支持一个配置文件Vagrntfile
     vagrant@11.11.1.2's password:
     Linux db 2.6.32-38-server #83-Ubuntu SMP Wed Jan 4 11:26:59 UTC 2012 x86_64 GNU/Linux
     Ubuntu 10.04.4 LTS
-    
+
     Welcome to the Ubuntu Server!
      * Documentation:  http://www.ubuntu.com/server/doc
     New release 'precise' available.
     Run 'do-release-upgrade' to upgrade to it.
-    
+
     Welcome to your Vagrant-built virtual machine.
     Last login: Thu Aug  8 18:58:50 2013 from 10.0.2.2
     vagrant@db:~$
-    
+
 
 通过上面的信息我们可以看到虚拟机之间通信是畅通的，所以现在开始你伟大的架构设计吧，你想设计怎么样的架构都可以，唯一限制你的就是你主机的硬件配置了。

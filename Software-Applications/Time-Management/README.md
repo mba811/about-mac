@@ -73,7 +73,7 @@ Mac中添加日程有几种方式，一种是直接点「+」号按钮添加，�
 
 Windows虚拟机中，通过安装「[iCloud控制面板](http://support.apple.com/kb/DL1455?viewlocale=zh_CN)」，可以直接在Outlook中添加和管理iCloud日程以及提醒事项，并自动同步到Mac或者iPhone。
 
-![Outlook日历和iCloud控制面板](http://upload-images.jianshu.io/upload_images/3175-1d5a783b779faae6.png?imageView2/2/w/1240/q/100)  
+![Outlook日历和iCloud控制面板](http://upload-images.jianshu.io/upload_images/3175-1d5a783b779faae6.png?imageView2/2/w/1240/q/100)
 
 
 Outlook日历和iCloud控制面板
