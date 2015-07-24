@@ -1,38 +1,31 @@
 # MySQL
 
-### Install
+### 安装 MySQL
 
-We will install [MySQL](http://www.mysql.com/) using Homebrew, which will also install some header files needed for MySQL bindings in different programming languages (MySQL-Python for one).
-
-To install, run:
-
-    $ brew update # Always good to do
+用下面的命令就可以自动安装了：
+    
     $ brew install mysql
+    
 
-As you can see in the ouput from Homebrew, before we can use MySQL we first need to set it up with:
+如果想让 MySQL 开机自动启动，可以如下操作：
+    
+    $ mkdir -p ~/Library/LaunchAgents
+    $ ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+    $ find /usr/local/Cellar/mysql/ -name "homebrew.mxcl.mysql.plist" -exec cp {} ~/Library/LaunchAgents/ \;
+    $ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+    
 
+设置 MySQL 用户以及数据存放地址
+    
     $ unset TMPDIR
-    $ mkdir /usr/local/var
     $ mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+    
 
-### Usage
-
-To start the MySQL server, use the `mysql.server` tool:
-
+好了，可以启动了
+    
     $ mysql.server start
+    
 
-To stop it when you are done, run:
+另外的参数还有 `{start|stop|restart|reload|force-reload|status}`
 
-    $ mysql.server stop
-
-You can see the different commands available for `mysql.server` with:
-
-    $ mysql.server --help
-
-To connect with the command-line client, run:
-
-    $ mysql -uroot
-
-(Use `exit` to quit the MySQL shell.)
-
-**Note**: By default, the MySQL user `root` has no password. It doesn't really matter for a local development database. If you wish to change it though, you can use `$ mysqladmin -u root password 'new-password'`.
+大部分的介绍就在此结束了。
