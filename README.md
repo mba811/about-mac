@@ -14,8 +14,6 @@ MAC OSX 是苹果公司设计开发的一款广受好评的操作系统。如果
 
 ## 目录浏览 
 
-----
-
   * [声明](https://github.com/mba811/about-mac/blob/master/book/copyright.md)
     * [为什么爱用 Mac](https://github.com/mba811/about-mac/blob/master/book/README.md)
   * [应用环境](https://github.com/mba811/about-mac/blob/master/Application-Environment/README.md)
@@ -23,7 +21,7 @@ MAC OSX 是苹果公司设计开发的一款广受好评的操作系统。如果
     * [语言、输入法和字体](https://github.com/mba811/about-mac/blob/master/Application-Environment/Language-input-method-and-fonts/README.md)
     * [安全、加密和备份](https://github.com/mba811/about-mac/blob/master/Application-Environment/Security-encryption-and-backup/README.md)
   * [软件应用](https://github.com/mba811/about-mac/blob/master/Software-Applications/README.md)
-    * [信息的浏览、采集](https://github.com/mba811/about-mac/blob/master/Software-Applications/Information-browsing-collection/README.md)
+    * [信息的浏览、采集](https://github.com/mba811/about-mac/blob/master/Software-Applications/Browse-the-collection-of-information/README.md)
     * [文档管理](https://github.com/mba811/about-mac/blob/master/Software-Applications/Document-Management/README.md)
     * [邮件、即时通讯和分享](https://github.com/mba811/about-mac/blob/master/Software-Applications/E-mail-instant-messaging-and-sharing/README.md)
     * [时间管理](https://github.com/mba811/about-mac/blob/master/Software-Applications/Time-Management/README.md)
@@ -45,6 +43,7 @@ MAC OSX 是苹果公司设计开发的一款广受好评的操作系统。如果
     * [版本工具 Git](https://github.com/mba811/about-mac/blob/master/Development-Application/Git/README.md)
       * [Git ignore](https://github.com/mba811/about-mac/blob/master/Development-Application/Git/gitignore.md)
       * [设置代理](https://github.com/mba811/about-mac/blob/master/Development-Application/Git/proxy.md)
+      * [Dotfiles](https://github.com/mba811/about-mac/blob/master/Development-Application/Git/dotfiles.md)
     * [编辑器-Sublime Text](https://github.com/mba811/about-mac/blob/master/Development-Application/SublimeText/README.md)
       * [配置](https://github.com/mba811/about-mac/blob/master/Development-Application/SublimeText/Preferences.md)
       * [Packages](https://github.com/mba811/about-mac/blob/master/Development-Application/SublimeText/Packages.md)
@@ -59,6 +58,7 @@ MAC OSX 是苹果公司设计开发的一款广受好评的操作系统。如果
     * [Python](https://github.com/mba811/about-mac/blob/master/Development-Application/Python/README.md)
       * [Pip](https://github.com/mba811/about-mac/blob/master/Development-Application/Python/pip.md)
       * [Virtualenv](https://github.com/mba811/about-mac/blob/master/Development-Application/Python/virtualenv.md)
+    * [Java](https://github.com/mba811/about-mac/blob/master/Development-Application/Java/README.md)
     * [数据库 MySql](https://github.com/mba811/about-mac/blob/master/Development-Application/MySql/README.md)
     * [Latex](https://github.com/mba811/about-mac/blob/master/Development-Application/Latex/README.md)
   * [虚拟应用](https://github.com/mba811/about-mac/blob/master/Virtual-Technology/README.md)
@@ -66,4 +66,3 @@ MAC OSX 是苹果公司设计开发的一款广受好评的操作系统。如果
     * [Vagrant](https://github.com/mba811/about-mac/blob/master/Virtual-Technology/Vagrant/README.md)
       * [安装配置](https://github.com/mba811/about-mac/blob/master/Virtual-Technology/Vagrant/Installation.md)
       * [使用入门](https://github.com/mba811/about-mac/blob/master/Virtual-Technology/Vagrant/Use.md)
-
