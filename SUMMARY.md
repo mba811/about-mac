@@ -45,6 +45,7 @@
     * [Python](Development-Application/Python/README.md)
         * [Pip](Development-Application/Python/pip.md)
         * [Virtualenv](Development-Application/Python/virtualenv.md)
+        * [Virtualenvwrapper](Development-Application/Python/virtualenvwrapper.md)
     * [Java](Development-Application/Java/README.md)
     * [数据库 MySql](Development-Application/MySql/README.md)
     * [Latex](Development-Application/Latex/README.md)
