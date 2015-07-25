@@ -1,138 +1,102 @@
 # Virtualenv
 
-> virtualenv is a tool to create isolated Python environments.
+## 创建 python 虚拟环境及简单使用
 
-`virtualenv`通过创建独立Python开发环境的工具, 来解决依赖、版本以及间接权限  
-问题. 比如一个项目依赖Django1.3 而当前全局开发环境为Django1.7, 版本跨度过大, 导致不兼容使项目无法正在运行, 使用virtualenv可以解决这些问题.
+进行不同的 python 项目开发，有的时候会遇到这样的情况：python 版本不一样，使用的软件包版本不一样。这种问题最佳的解决办法是使用 virtualenv 为不同的项目搭建独立的 python 环境。
 
-> `virtualenv`创建一个拥有自己安装目录的环境, 这个环境不与其他虚拟环境共享库, 能够方便的管理python版本和管理python库
+## virtualenv
 
-# 1. 安装Virtualenv
+### 安装
+    
+    sudo pip install virtualenv
+    
 
-使用`pip`安装Virtualenv, 使用过python的都应该知道`pip`包管理神器吧, 即使不知道, 网站也有大把的教程, 不过推荐查看[官方安装指南](https://pip.pypa.io/en/latest/installing.html)
+### 创建
     
-    $ pip install virtualenv
+    mkdir myproject
+    cd myproject
+    virtualenv myproject_ENV
     
-    //或者由于权限问题使用sudo临时提升权限
-    
-    $ sudo pip install virtualenv
 
-# 2. virtualenv基本使用
+  1. 创建项目文件夹 `myproject`
 
-现在开始使用virtualenv管理python环境
-    
-    ➜  Test git:(master) ✗ virtualenv ENV  #创建一个名为ENV的目录, 并且安装了ENV/bin/python, 创建了lib,include,bin目录,安装了pip
-    
-    New python executable in 
-    
-    Installing setuptools, pip...done.
-    
-    ➜  Test git:(master) ✗ cd ENV
-    
-    ➜  ENV git:(master) ✗ ll
-    
-    drwxr-xr-x  14 andrew_liu  staff  476 12  8 08:49 bin
-    
-    drwxr-xr-x   3 andrew_liu  staff  102 12  8 08:49 include
-    
-    drwxr-xr-x   3 andrew_liu  staff  102 12  8 08:49 lib
+  2. 进入项目目录
 
-  * `lib`,所有安装的python库都会放在这个目录中的`lib/pythonx.x/site-packages/`下
-  * `bin`,`bin/python`是在当前环境是使用的python解释器
+  3. 创建虚拟环境 `myproject_ENV`
 
-> 如果在命令行中运行`virtualenv --system-site-packages ENV`, 会继承`/usr/lib/python2.7/site-packages`下的所有库, 最新版本virtualenv把把访问全局`site-packages`作为默认行为  
-default behavior.
+这时候会发现在 `myproject` 目录下新增了一个 `myproject_ENV` 的文件夹。
 
-## 2.1. 激活virtualenv
+### 使用
+    
+    cd myproject_ENV
+    source ./bin/activate
+    
 
-    #ENV目录下使用如下命令
-    
-    ➜  ENV git:(master) ✗ source ./bin/activate  #激活当前virtualenv
-    
-    (ENV)➜  ENV git:(master) ✗ #注意终端发生了变化
+  1. 进入虚拟环境目录 `myproject_ENV`
 
-    
-    #使用pip查看当前库
-    
-    (ENV)➜  ENV git:(master) ✗ pip list
-    
-    pip (1.5.6)
-    
-    setuptools (3.6)
-    
-    wsgiref (0.1.2) #发现在只有这三个
-    
-    pip freeze  #显示所有依赖
-    
-    pip freeze > requirement.txt  #生成requirement.txt文件
-    
-    pip install -r requirement.txt  #根据requirement.txt生成相同的环境
+  2. 激活
 
-## 2.2. 关闭virtualenv
+这时候在命令行的最左边会显示该虚拟环境的名称。不妨使用下面的命令查看一下变化：
+    
+    which python
+    which pip
+    pip list
+    
 
-使用下面命令
+如果想要退出虚拟环境，使用这个命令就可以了：
     
-    $ deactivate
+    deactivate
+    
 
-## 2.3. 指定python版本
+## 扩展包 Virtualenvwrapper
 
-可以使用`-p PYTHON_EXE`选项在创建虚拟环境的时候指定python版本
-    
-    #创建python2.7虚拟环境
-    
-    ➜  Test git:(master) ✗ virtualenv -p /usr/bin/python2.7 ENV2.7
-    
-    Running virtualenv with interpreter /usr/bin/python2.7
-    
-    New python executable in ENV2.7/bin/python
-    
-    Installing setuptools, pip...done.
+Virtualenvwrapper 的作用是：更方便的创建/激活/管理/销毁虚拟环境。
 
+### 安装及配置
     
-    #创建python3.4虚拟环境
+    sudo pip install virtualenvwrapper
     
-    ➜  Test git:(master) ✗ virtualenv -p /usr/local/bin/python3.4 ENV3.4
-    
-    Running virtualenv with interpreter /usr/local/bin/python3.4
-    
-    Using base prefix '/Library/Frameworks/Python.framework/Versions/3.4'
-    
-    New python executable in ENV3.4/bin/python3.4
-    
-    Also creating executable in ENV3.4/bin/python
-    
-    Installing setuptools, pip...done.
 
-> 到此已经可以解决python版本冲突问题和python库不同版本的问题
-
-# 3. 其他
-
-## 3.1. 生成可打包环境
-
-某些特殊需求下,可能没有网络, 我们期望直接打包一个ENV, 可以解压后直接使用, 这时候可以使用`virtualenv -relocatable`指令将ENV修改为可更改位置的ENV
+默认安装完成后并不能使用 Virtualenvwrapper 的命令，需要进行配置，在 `~/.bashrc` 文件中添加：
     
-    #对当前已经创建的虚拟环境更改为可迁移
+    if [ `id -u` != '0' ]; then
     
-    ➜  ENV3.4 git:(master) ✗ virtualenv --relocatable ./
+      export VIRTUALENV_USE_DISTRIBUTE=1        # <-- Always use pip/distribute
+      export WORKON_HOME=$HOME/.virtualenvs       # <-- Where all virtualenvs will be stored
+      source /usr/local/bin/virtualenvwrapper.sh
+      export PIP_VIRTUALENV_BASE=$WORKON_HOME
+      export PIP_RESPECT_VIRTUALENV=true
     
-    Making script ./bin/easy_install relative
+    fi
     
-    Making script ./bin/easy_install-3.4 relative
+
+之后运行命令：
     
-    Making script ./bin/pip relative
+    source ~/.bashrc
     
-    Making script ./bin/pip3 relative
+
+### 使用
     
-    Making script ./bin/pip3.4 relative
+    mkvirtualenv myproject_ENV    # 创建虚拟环境 myproject_ENV
+    workon myproject_ENV          # 激活 myproject_ENV
+    deactivate                    # 离开
+    rmvirtualenv myproject_ENV    # 删除 myproject_ENV
+    lsvirtualenv                  # 虚拟环境列表
+    
 
-## 3.2. 获得帮助
+### 其他命令
+    
+    showvirtualenv [env]             # 显示指定环境的详情。
+    rmvirtualenv [env]               # 移除指定的虚拟环境，移除的前提是当前没有在该环境中工作。如在该环境工作，先使用deactivate退出。
+    cpvirtualenv [source] [dest]     # 复制一份虚拟环境。
+    cdvirtualenv [subdir]            # 把当前工作目录设置为所在的环境目录。
+    cdsitepackages [subdir]          # 把当前工作目录设置为所在环境的sitepackages路径。
+    add2virtualenv [dir] [dir]       # 把指定的目录加入当前使用的环境的path中，这常使用于在多个project里面同时使用一个较大的库的情况。
+    toggleglobalsitepackages -q      # 控制当前的环境是否使用全局的sitepackages目录。
+    
 
-    $ virtualenv -h
+## 参考
 
-当前的ENV都被修改为相对路径, 可以打包当前目录, 上传到其他位置使用
+  1. virtualenv documentation: [https://virtualenv.pypa.io/en/latest/](https://virtualenv.pypa.io/en/latest/)
 
-> 这并不能使虚拟环境跨平台使用
-
-# 4. 参考链接
-
-[virtualenv官方文档](http://virtualenv.readthedocs.org/en/latest/virtualenv.html)
+  2. virtualenvwrapper documentation: [http://virtualenvwrapper.readthedocs.org/en/latest/](http://virtualenvwrapper.readthedocs.org/en/latest/)
